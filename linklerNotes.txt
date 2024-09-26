@@ -1,0 +1,19 @@
+Loop through Text 1 while having relocation table 1 on stand by. Going line by line if there is a modification of 
+the text line im currently on (with lw or sw) in the data section then resolve that issue using these methods:
+	1. If its a local variable then you have to add the length of the other text files and preceeding data 
+	to the offset.
+	2. If its a global variable then loop through and find which symbol table has that variable 
+	then take that number listed and add it with the text's size at and preceeding + data preceeding
+Move on to next text until there aren't anymore texts.
+Loop through Data 1 while having relocation table 1 on stand by. Going line by line if there is a modification of
+the data line im currently on (with .fill) in the data section then resolve that issue using these methods
+	1. If its a local variable then you have to see if the data number is less than the text length
+	if it is (meaning its in text) then add it with the preceeding text. If it isn't (meaning its in data)
+	then add preceeding text and preceeding data
+	2. If its a global variable then loop through and find which symbol table has that variable 
+	then take that number listed and add it with the data's size at and preceeding + data preceeding
+Move on to next text until there aren't anymore datas.
+
+
+
+

@@ -1,0 +1,199 @@
+	lw	0	1	five
+	lw	0	4	SubAdr
+start	jalr	4	7
+	beq	0	1	done
+	beq	0	0	start
+done	halt
+subOne	lw	0	2	neg1	
+	add	1	2	1
+	jalr	7	6
+five	.fill	5
+Test	.fill	3
+neg1	.fill	-1
+SubAdr	.fill	subOne
+	.fill	Test
+
+Test   D 1
+SubAdr U 0
+0 lw five
+1 lw SubAdr
+
+Test   u 1
+SubAdr U 1
+Test   U 1
+0 lw neg1
+1 .fill subOne
+2 .fill Test
+
+
+
+Test   T 1
+SubAdr D 1
+0 lw neg1
+1 .fill subOne
+2 .fill Test
+
+
+
+Test multiple undefined, CHECK
+text refered in the same data, CHECK
+text refered in different data, CHECK (Multiple undefined did this) tidd, didd
+text refered in different text, CHECK
+data refered in same text, CHECK
+data refered in different text, CHECK
+data refered in different data, CHECK (Multiple undefined did this)
+globally defined in same file(text refered in same text, data in same data) CHECK and CHECK
+
+
+Defined Stack label, CHECK
+Multiple defined gobal labels, CHECK
+Never Defined Labels, CHECK
+
+
+
+
+	lw	0	1	five
+tist	lw	0	4	Mulab
+start	jalr	4	7
+	lw	0	1	Tidt
+	sw	0	0	tist
+done	halt
+
+
+subOne	lw	0	2	neg1
+Tist   	add	1	2	1
+Didt	beq	0	0   Tist
+
+
+Tidt   	lw	0	2	3
+	add	1	2	1
+	jalr	7	6
+Dist    sw  0   6   Tisd
+
+
+five	.fill	5
+
+neg1	.fill	-1
+Mulab 	.fill   subOne
+
+Disd    .fill	-1
+Tisd   	.fill	Mulab
+    	.fill	Disd
+	.fill	Didt
+        .fill   Dist
+
+
+8454150 adds 7 correctly
+8650752 adds 15 correctly
+23527424 does nothing
+8454144 adds 9 correctly
+12582913 adds 0
+25165824 does nothing
+5 does nothing
+Mulab U 0 
+Tidt U 0
+0 lw five
+1 lw Mulab
+3 lw Tidt
+4 sw tist
+
+
+8519683 adds 11 correctly
+655361 does nothing
+16842750 does nothing
+-1 correct
+0 adds 6 incorrect
+Tist T 1
+Didt T 2
+Mulab D 1
+0 lw neg1
+1 .fill subOne
+
+
+8519683 does nothing
+655361 does nothing
+25034752 does nothing
+12976133 should add +  12
+-1 does nothing
+0 adds 15 correct
+4 adds 12 correct
+0 adds 8 correct
+3 adds 9 correct
+Tidt T 0
+Dist T 3
+Disd D 0
+Tisd D 1
+Mulab U 0
+Didt U 0
+3 sw Tisd
+1 .fill Mulab
+2 .fill Disd
+3 .fill Didt
+4 .fill Dist
+
+
+
+
+
+
+
+	lw	0	1	five
+rltg	lw	0	4	Mucle
+start	jalr	4	7
+    	lw	0	1	rltg
+
+	lw	0	1	Two
+	lw	0	4	Mucle
+start	jalr	4	7
+Mucle	lw	0	1	Rltg
+done	halt
+
+five	.fill	5
+Rltg    .fill rltg
+
+test	.fill	3
+Two	.fill	test
+
+
+4 2 2 4
+8454148 correctly adds 5
+8650752 correctly adds 7
+23527424 does nothing
+8454145 correctly adds 0
+5 does nothing
+1 adds 0
+Mucle U 0
+Rltg D 1
+0 lw five
+1 lw Mucle
+3 lw rltg
+1 .fill rltg
+
+
+5 1 2 4
+8454150 incorrectly adds 6
+8650755 correctly adds 4
+23527424 does nothing
+8454144 correctly adds 10
+25165824 does nothing
+3 does nothing
+5
+Mucle T 3
+Rltg U 0
+0 lw two
+1 lw Mucle
+3 lw Rltg
+0 .fill Mucle
+
+
+
+
+
+
+
+
+
+
+
+
+

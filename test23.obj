@@ -1,0 +1,26 @@
+8 4 7 6
+8454152
+8650752
+589825
+23527424
+12648450
+8585225
+16842748
+25165824
+5
+6
+0
+2
+Diff T 0
+SubAdr U 0
+Trip T 2
+Start T 3
+Six D 1
+Spec D 2
+Tank D 3
+0 lw five
+1 lw SubAdr
+4 sw Trip
+5 lw Six
+2 .fill Diff
+3 .fill Trip

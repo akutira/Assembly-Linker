@@ -1,0 +1,45 @@
+11 8 13 12
+8454155
+8650752
+589825
+23527424
+12648448
+8585228
+16842748
+14483456
+11206656
+18022396
+25165824
+5
+6
+0
+0
+0
+0
+14
+13
+Diff T 0
+SubAdr U 0
+Start T 3
+Trip U 0
+PASS T 5
+Tank T 7
+Undeft U 0
+Six D 1
+Spec D 2
+New D 4
+Undefd U 0
+Spin D 5
+Shad D 7
+0 lw five
+1 lw SubAdr
+4 sw Trip
+5 lw Six
+7 sw Undeft
+8 lw Undeft
+2 .fill Diff
+3 .fill Trip
+4 .fill Undefd
+5 .fill Undefd
+6 .fill pac
+7 .fill Spec
